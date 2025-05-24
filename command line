@@ -1,0 +1,19 @@
+##open the bash rc file ##
+gedit ~/.bashrc
+
+##gazebo and rviz launch ##
+ros2 launch articubot_one all.launch.py use_sim_time:=True 
+
+##localiztion 
+
+ ros2 launch nav2_bringup localization_launch.py  map:=./src/articubot_one/maps/map.yaml use_sim_time:=true
+
+## amcl
+
+ros2 launch articubot_one navigation_launch.py use_sim_time:=true map_subscribe_transient_local:=true
+
+##node 
+ros2 run articubot_one nav.py 
+
+
+
